@@ -1,0 +1,13 @@
+body {
+  font-size: 100%;
+  font-family: "Open Sans", sans-serif;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+header {
+  background: #3551ad;
+}
