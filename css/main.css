@@ -8,6 +8,224 @@ body {
   -ms-interpolation-mode: nearest-neighbor;
 }
 
+a,
+a:hover,
+a:focus {
+  -webkit-transition: all 250ms ease-in-out 0s;
+  transition: all 250ms ease-in-out 0s;
+}
+
+/* Header */
 header {
-  background: #3551ad;
+  background-color: #3551ad;
+  width: 100%;
+  height: 80px;
+  padding: 20px 40px;
+}
+header a.logo-block {
+  background: url(../image/logo.svg) no-repeat;
+  float: left;
+  width: 192px;
+  height: 40px;
+  display: block;
+  text-indent: -9999px;
+}
+header .telephone {
+  float: left;
+  color: #fff;
+  font-size: 2.7em;
+  font-weight: 700;
+  margin: 0 0 0 40px;
+}
+header .telephone i {
+  margin: 10px 8px 0 0;
+  float: left;
+}
+header nav {
+  float: right;
+}
+header nav ul {
+  display: inline-block;
+  margin: 9px 0 0 0;
+}
+header nav ul li {
+  float: left;
+  padding: 0 20px 0 0;
+}
+header nav ul li a {
+  color: #fff;
+  font-size: 1.4em;
+  letter-spacing: 0.2em;
+  display: inline-block;
+}
+header nav ul li a i {
+  float: right;
+  margin: 5px 0 0 5px;
+}
+header nav ul li a:hover {
+  border-bottom: 1px solid #ff4081;
+  color: #fff;
+  padding-bottom: 5px;
+  text-decoration: none;
+}
+header nav ul li:last-child {
+  padding: 0;
+}
+
+footer {
+  background-color: #252525;
+  width: 100%;
+}
+footer .header-footer {
+  border-bottom: 1px solid #000;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  display: inline-block;
+  width: 100%;
+}
+footer .header-footer a.logo-block {
+  background: url(../image/logo.svg) no-repeat;
+  float: left;
+  width: 192px;
+  height: 40px;
+  display: block;
+  text-indent: -9999px;
+}
+footer .header-footer ul {
+  float: right;
+  margin-top: 13px;
+}
+footer .header-footer ul li {
+  float: left;
+  padding: 0 25px 0 0;
+}
+footer .header-footer ul li:last-child {
+  padding: 0;
+}
+footer .header-footer ul a {
+  color: #999;
+}
+footer .header-footer ul a:hover {
+  color: #fff;
+}
+footer .header-footer ul a i {
+  font-size: 2em;
+}
+footer h4 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.7em;
+  width: 9%;
+  border-bottom: 1px solid #3551ad;
+  padding: 0 0 4px 0;
+  margin: 0 0 2px 0;
+}
+footer hr {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+  width: 18%;
+  border-top: 1px solid #3551ad;
+  float: left;
+}
+footer .footer-copyright {
+  background-color: #222;
+  height: 80px;
+}
+footer .footer-copyright p {
+  font-size: 1.3em;
+  color: #fff;
+  padding: 30px 0 0 0;
+}
+footer .footer-copyright p strong {
+  font-weight: 700;
+}
+footer .footer-badges {
+  padding-top: 22px;
+}
+footer .footer-badges img {
+  float: right;
+  margin-right: 10px;
+}
+footer .footer-badges img:nth-child(1) {
+  width: 26px;
+  margin: 0 0 0 10px;
+}
+footer .footer-badges img:nth-child(2), footer .footer-badges img:nth-child(3) {
+  width: 120px;
+}
+footer ul.category-links {
+  display: inline-block;
+  width: 100%;
+  margin: 15px 0 30px 0;
+}
+footer ul.category-links .col-md-3 {
+  padding: 0 2px 10px 2px;
+  font-size: 1.3em;
+}
+footer ul.category-links a {
+  color: #999;
+}
+footer .second-category-links {
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .col-md-3 {
+    width: 33.33%;
+    float: left;
+  }
+
+  .container {
+    padding-right: 25px;
+    padding-left: 25px;
+    width: 100%;
+  }
+
+  footer .col-md-5,
+  footer .col-md-7 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  footer .col-md-7 {
+    float: left;
+  }
+}
+@media only screen and (max-width: 680px) {
+  footer .col-md-5,
+  footer .col-md-7 {
+    width: 100%;
+  }
+  footer .footer-copyright {
+    height: auto;
+    padding-bottom: 20px;
+  }
+  footer .footer-badges {
+    display: inline-block;
+    padding-top: 10px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .col-md-3 {
+    width: 50%;
+  }
+
+  footer h4 {
+    width: 16%;
+  }
+  footer hr {
+    width: 32%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  footer .header-footer ul {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .col-md-3 {
+    width: 100%;
+  }
 }
