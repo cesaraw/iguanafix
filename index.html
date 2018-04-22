@@ -18,18 +18,34 @@
 
 	<header>
 		<a href="index.html" class="logo-block">IguanaFix</a>
-		<div class="telephone"><i class="fas fa-phone fa-xs fa-flip-horizontal"></i> 0810-220-6173</div>
-		<nav>
-			<ul>
-				<li><a href="#">Casa</a></li>
-				<li><a href="#">Auto</a></li>
-				<li><a href="#">Empresas</a></li>
-				<li><a href="#">Ingresar <i class="fas fa-user fa-sm"></i></a></li>
-			</ul>		
-		</nav>	
+
+		<button class="menu-btn"><i class="fas fa-bars menu-bars"></i></button>
+		<div class="header-data">
+			<div class="telephone"><i class="fas fa-phone fa-xs fa-flip-horizontal"></i> 0810-220-6173</div>
+			<nav>
+				<ul>
+					<li><a href="#">Casa</a></li>
+					<li><a href="#">Auto</a></li>
+					<li><a href="#">Empresas</a></li>
+					<li><a href="#" class="login-button">Ingresar <i class="fas fa-user fa-sm"></i></a></li>
+				</ul>		
+			</nav>
+		</div>
+
+		<div id="login-Modal" role="dialog">
+			<div class="login-block">
+				<label for="email">E-mail</label>
+				<input type="email" name="email">
+				<label for="pass">Contraseña</label>
+				<input type="password" name="pass">
+
+				<input type="submit" name="enviar">
+			</div>
+		</div>
 	</header>
 
 	<main>
+		
 		<article class="container">
 			<div class="row">
 				<div class="col">col</div>

@@ -73,6 +73,34 @@ strong {
   font-weight: 700;
 }
 
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+input {
+  border: none;
+  padding: 5px 10px;
+}
+
+.close-menu {
+  top: 0;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 100% !important;
+  z-index: 0;
+  height: 100% !important;
+}
+
 @media only screen and (max-width: 1200px) {
   .container {
     padding-right: 25px;
@@ -117,16 +145,22 @@ header nav ul li {
   float: left;
   padding: 0 20px 0 0;
 }
-header nav ul li a {
+header nav ul li a,
+header nav ul li a:visited,
+header nav ul li a:active {
   color: #fff;
   letter-spacing: 0.15em;
   display: inline-block;
 }
-header nav ul li a i {
+header nav ul li a i,
+header nav ul li a:visited i,
+header nav ul li a:active i {
   float: right;
   margin: 1px 0 0 5px;
 }
-header nav ul li a:hover {
+header nav ul li a:hover,
+header nav ul li a:visited:hover,
+header nav ul li a:active:hover {
   border-bottom: 1px solid #ff4081;
   color: #fff;
   padding-bottom: 6px;
@@ -134,6 +168,126 @@ header nav ul li a:hover {
 }
 header nav ul li:last-child {
   padding: 0;
+}
+header button.menu-btn {
+  display: none;
+}
+header .visible {
+  display: block;
+  visibility: visible;
+}
+header .modal .login-block {
+  position: relative;
+  right: auto;
+  margin: 0 auto 0;
+}
+@media only screen and (max-width: 1200px) {
+  header {
+    padding: 20px 25px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  header {
+    height: 66px;
+    padding: 0;
+  }
+  header .header-data {
+    width: 240px;
+    background: #3551ad;
+    border-top: 2px solid #ff4081;
+    right: 0;
+    position: absolute;
+    z-index: 2000;
+    display: none;
+    top: 66px;
+  }
+  header .telephone {
+    font-size: 1.2em;
+    padding: 15px 25px;
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  header nav {
+    margin: 12px 0;
+  }
+  header nav ul li,
+  header nav ul li:last-child {
+    width: 100%;
+    padding: 0;
+  }
+  header nav ul li a,
+  header nav ul li a:visited,
+  header nav ul li a:active,
+  header nav ul li:last-child a,
+  header nav ul li:last-child a:visited,
+  header nav ul li:last-child a:active {
+    width: 100%;
+    padding: 12px 20px;
+  }
+  header nav ul li a:hover,
+  header nav ul li a:visited:hover,
+  header nav ul li a:active:hover,
+  header nav ul li:last-child a:hover,
+  header nav ul li:last-child a:visited:hover,
+  header nav ul li:last-child a:active:hover {
+    background-color: #ff4081;
+    padding: 12px 20px;
+    border-bottom: none;
+  }
+  header a.logo-block {
+    width: 170px;
+    height: 36px;
+    margin: 16px 0 16px 25px;
+  }
+  header button.menu-btn {
+    display: block;
+    visibility: visible;
+    float: right;
+    color: #fff;
+  }
+  header button.menu-btn i {
+    font-size: 1.6em;
+    padding: 20px 25px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  header .header-data {
+    width: 100%;
+  }
+}
+
+.login-block {
+  width: 240px;
+  background: #3551ad;
+  border-top: 2px solid #ff4081;
+  right: 0;
+  position: absolute;
+  z-index: 2000;
+  display: none;
+  top: 80px;
+  padding: 30px 25px;
+}
+.login-block input {
+  width: 100%;
+  margin: 6px 0 20px 0;
+}
+.login-block input[type="submit"] {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 0.9em;
+  background-color: #ff4081;
+  padding: 11px;
+  margin: 8px 0 0 0;
+}
+.login-block input[type="submit"]:hover {
+  background-color: #e63a74;
+}
+.login-block label {
+  color: #fff;
+  font-size: 0.9em;
 }
 
 footer {
