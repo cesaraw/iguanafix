@@ -1,0 +1,111 @@
+
+
+=breakpoint-min($screen-size)
+	@media only screen and (min-width: $screen-size+px)
+		@content
+
+=breakpoint-max($screen-size)
+	@media only screen and (max-width: $screen-size+px)
+		@content
+
+
+
+
+=list($padding)
+	float: left
+	padding: 0 $padding 0 0	
+
+=logo
+	background: url(../image/logo.svg) no-repeat
+	float: left
+	width: 192px
+	height: 40px
+	display: block
+	text-indent: -9999px
+
+=truncate
+	white-space: nowrap
+	overflow: hidden
+	text-overflow: ellipsis
+
+=hidden
+	display: none
+	visibility: hidden
+
+=visible
+	display: block
+	visibility: visible
+
+=border-radius($size)
+	-webkit-border-radius: $size+px
+	-moz-border-radius: $size+px
+	border-radius: $size+px
+
+=input-dark
+	color: $white
+	font-size: 0.9em
+
+=slide-menu
+	width: 240px
+	background: $primary-color
+	border-top: 2px solid $secondary-color
+	right: 0	
+	position: absolute
+	z-index: 2000
+	display: none
+
+
+body
+	font-size: 100%
+	font-family: $font-family
+	image-rendering: -moz-crisp-edges
+	image-rendering:   -o-crisp-edges
+	image-rendering: -webkit-optimize-contrast
+	image-rendering: crisp-edges
+	-ms-interpolation-mode: nearest-neighbor
+
+a,
+a:hover,
+a:focus
+	-webkit-transition: all 250ms ease-in-out 0s
+	transition: all 250ms ease-in-out 0s
+	text-decoration: none
+
+strong
+	font-weight: 700
+
+button
+	background: none
+	border: none
+	padding: 0
+
+
+input:focus,
+textarea:focus,
+button:focus
+	outline: none
+
+
+input
+	border: none
+	padding: 5px 10px
+
+
+.close-menu
+	top: 0
+	padding: 0
+	margin: 0
+	background: rgba(0, 0, 0, 0.1)
+	display: block
+	width: 100% !important
+	z-index: 0
+	height: 100% !important
+
+
+//* Responsive Adjustments of General */
+
++breakpoint-max(1200)
+	.container
+		padding-right: $padding-web
+		padding-left: $padding-web
+		width: 100%

@@ -1,0 +1,205 @@
+// Footer
+
+footer
+	background-color: $black
+	width: 100%
+
+	.header-footer
+		border-bottom: 1px solid #000
+		padding-top: 40px
+		padding-bottom: 20px
+		margin-bottom: 30px
+		display: inline-block
+		width: 100%
+
+		a.logo-block
+			+logo
+
+		ul
+			float: right
+			margin-top: 13px
+
+			li
+				+list(22px)
+
+			li:last-child
+				padding: 0
+
+			a
+				color: $category-links-color
+
+				&:hover
+					color: $white
+
+				i
+					font-size: 1.4em
+
+	h4
+		color: $white
+		font-weight: 600
+		font-size: 1.2em
+		width: 9%
+		border-bottom: 1px solid $primary-color
+		padding: 0 0 4px 0
+		margin: 0 0 2px 0
+
+	hr
+		margin-top: 0
+		margin-bottom: 0
+		border: 0
+		width: 18%
+		border-top: 1px solid #3551ad
+		float: left
+
+	.footer-copyright
+		background-color: $copyright-color
+		height: $header-height
+
+		p
+			color: $category-links-color
+			padding: 32px 0 0 0
+			font-size: 0.8em
+
+	.footer-badges
+		padding-top: 22px
+
+		img
+			float: left
+			margin-right: 10px
+
+			&:nth-child(1),
+			&:nth-child(2)
+				width: 120px
+			&:nth-child(3)
+				width: 26px
+				margin: 0 0 0 10px
+
+		.badges-block
+			display: inline-block
+			float: right
+
+	ul
+		&.category-links
+			display: inline-block
+			width: 100%
+			margin: 15px 0 30px 0
+
+			a
+				color: $category-links-color
+				font-size: 0.8em
+				padding: 6px 0
+				display: inline-block
+				width: 100%
+				+truncate
+
+				&:hover
+					color: $white
+			
+	.col-md-3
+		padding: 0 0 4px 0
+
+
+
+	//* Responsive Adjustments of Footer */
+
+	+breakpoint-max(1200)
+		.col-md-5,
+		.col-md-7
+			padding-left: 0
+			padding-right: 0			
+
+		.col-md-7
+			float: left
+
+		.col-md-3
+			width: 33.33%
+			float: left
+
+			&:nth-child(3n+2)
+				&.col-md-3
+					padding: 0 14px 4px 14px
+
+		.second-category-links
+			margin-bottom: 30px
+
+
+	+breakpoint-max(750)
+		h4
+			width: 16%
+
+		hr
+			width: 32%
+
+		.col-md-3
+			width: 50%
+
+			&:nth-child(3n+2)
+				&.col-md-3
+					padding: 0 2px 6px 2px
+			&:nth-child(2n)
+				&.col-md-3
+					padding: 0 2px 6px 14px
+
+	+breakpoint-max(680)
+		.col-md-5,
+		.col-md-7
+			width: 100%
+
+		.footer-copyright
+			height: auto
+			padding-bottom: 20px
+
+			p
+				padding: 22px 0 0 0
+				line-height: 1.4
+
+		.footer-badges
+			display: inline-block
+			padding-top: 15px
+
+			.badges-block
+				float: left
+
+
+	+breakpoint-max(500)
+		.header-footer ul
+			width: 100%
+			margin-top: 25px
+
+
+
+	+breakpoint-max(460)
+		.col-md-3
+			width: 100%
+
+			&:nth-child(2n)
+				&.col-md-3
+					padding: 0 2px 4px 2px
+
+		.footer-badges
+			img
+				&:nth-child(1),
+				&:nth-child(2)
+					width: 100px
+				&:nth-child(3)
+					width: 21px
+		hr
+			width: 50%
+
+		h4
+			width: 25%
+
+
+	+breakpoint-max(300)
+		.footer-badges
+			img
+				display: block
+				float: none
+				margin: 0 0 10px 0
+
+				&:nth-child(3)
+					width: 26px
+					margin: 0
+					
+		.header-footer ul li
+			padding: 0 18px 13px 0
