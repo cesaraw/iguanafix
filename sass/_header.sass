@@ -131,18 +131,16 @@ header
 		width: 100%
 		margin: 6px 0 20px 0
 
-		&[type="submit"]
-			+border-radius(15)
-			+input-dark
-			background-color: $secondary-color
-			padding: 11px				
+		&[type="submit"]			
+			+primary-button(15,0.9,11)			
 			margin: 8px 0 0 0
 
 			&:hover
 				background-color: mix(black,$secondary-color,10%)
 
 	label
-		+input-dark
+		font-size: 0.9em
+		color: $white
 
 
 

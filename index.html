@@ -45,37 +45,60 @@
 	</header>
 
 	<main>
-		
 		<article class="container">
 			<div class="row">
-				<div class="col">col</div>
+				<div class="col-md-12 product-tree">
+					<p><a href="#">Contratar un servicio</a> <i class="fas fa-caret-right"></i> <a href="#">Instalación de aire acondicionado</a></p>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-1 product-thumbs"></div>
-				<div class="col-5 product-image"></div>
-				<div class="col-6 product-description">
-					<h1></h1>
-					<p class="product-price"></p>
+				<div class="block-images">
+					<div class="col-md-1 product-thumbs">
+						<a href="#"><img src="image/thumb.jpg"></a>
+						<a href="#"><img src="image/thumb.jpg"></a>
+						<a href="#"><img src="image/thumb.jpg"></a>
+					</div>
+					<div class="col-md-6 product-image">
+						<img src="image/product-image.jpg">
+					</div>
+				</div>
+				<div class="col-md-5 product-description">
+					<h1>Instalación de aire acondicionado split</h1>
+					<p class="product-price">
+						$3.199
+					</p>
 
+					<h3>Frigorías</h3>
 					<form>
-						<select name="product-detail"></select>
-						<input type="number" name="product-quantity">
-						<button type="submit">Programa visita</button>
+						<select name="product-detail">
+							<option value="1">Hasta 3.000 frigorías</option>
+							<option value="2">Hasta 4.000 frigorías</option>
+							<option value="3">Hasta 5.000 frigorías</option>
+						</select>
+						<div class="quantity-module">
+							<button class="substract">-</button>
+							<input type="number" name="product-quantity">
+							<button class="add">+</button>
+							<label>unidades</label>	
+						</div>
+											
 					</form>
 					
 					<div class="product-include">
+						<button type="submit" class="btn-programar">Programar visita</button>
+
 						<p>Qué incluye</p>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li><i class="fas fa-check"></i> Desinstalación del equipo anterior</li>
+							<li><i class="fas fa-check"></i> Colocación de nuevo equipo: unidad anetrior y exterior</li>
+							<li><i class="fas fa-check"></i> Colocación de drenaje</li>
 						</ul>
 					</div>					
 				</div>
-			</div>
 		</article>
 
-		<article>
+		<article class="container">
+			<div class="row">
 				<ul>
 					<li>Detalles del servicio</li>
 					<li>Qué no incluye</li>
@@ -90,7 +113,10 @@
 					<div class="col"></div>
 					<div class="col"></div>
 				</div>
+			</div>
 		</article>
+
+		</div>
 	</main>
 
 
