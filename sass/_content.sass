@@ -27,7 +27,7 @@
 
 .product-description	
 	position: relative
-	height: 550px
+	height: 662px
 
 	h1
 		font-size: 2em
@@ -113,6 +113,100 @@
 				font-size: 0.8em
 				margin-right: 4px
 
+.product-more-details
+	margin-top: 50px
+
+	.tab-content
+		//width: 70%		
+
+		&>.active
+			margin: 70px auto
+			float: none
+
+		p 
+			line-height: 1.6
+			color: $text-color
+			margin: 0 0 20px 0
+
+	ul
+		text-align: center
+
+		li
+			display: inline-block
+			float: none
+
+
+.nav-tabs>li>a
+	border: none
+	font-weight: 900
+	color: $text-color
+	letter-spacing: 0.05em
+	border-bottom: 3px solid transparent
+
+.nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:focus, 
+.nav-tabs>li.active>a:hover
+	border: none
+	color: $primary-color
+	border-bottom: 3px solid $primary-color
+
+.related-products
+	display: inline-block
+	margin: 0 0 80px 0
+	width: 100%
+
+	img
+		width: 100%
+		display: block
+
+	.col-md-8
+		margin: 0 auto
+		float: none
+		padding: 0
+
+.related-inner
+	border: 1px solid rgba($text-color,0.4)
+
+	&:hover
+		border: 1px solid $secondary-color
+
+.related-block
+	padding: 15px 15px
+	display: inline-block
+	width: 100%
+
+	h5
+		font-weight: 600
+		+truncate
+
+	p 
+		color: $text-color
+		line-height: 1.4
+		font-size: 0.9em
+		margin: 0 0 20px 0
+
+		&.product-price
+			font-weight: 600
+			color: $secondary-color
+			margin: 4px 0 10px 0
+
+	button
+		+primary-button-outline(24,0.9,10px 35px)
+		text-transform: uppercase
+		width: 100%
+
+		&:hover
+			background-color: $secondary-color
+			color: $white
+
+
+
++breakpoint-max(1100)
+	.product-more-details .tab-content > .active,
+	.related-products .col-md-8
+		width: 80%
+
+
 
 +breakpoint-max(990)
 
@@ -130,6 +224,15 @@
 
 	.product-description
 		height: auto
+
+	.related-products
+		.col-md-4
+			width: 33.33%
+			float: left
+
+	.product-more-details .tab-content > .active,
+	.related-products .col-md-8
+		width: 100%
 
 
 +breakpoint-max(768)
@@ -161,6 +264,26 @@
 
 	.product-include button
 		padding: 18px 20px
+
+	.related-products
+		.col-md-4
+			width: 50%
+			margin-bottom: 30px
+
+
++breakpoint-max(486)
+
+	.related-products
+		.col-md-4
+			width: 100%
+			padding: 0
+
+	.product-more-details .tab-content > .active
+		margin: 30px auto 50px
+		float: none
+
+
+
 
 
 +breakpoint-max(400)

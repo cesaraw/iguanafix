@@ -63,7 +63,8 @@ body {
 
 a,
 a:hover,
-a:focus {
+a:focus,
+button {
   -webkit-transition: all 250ms ease-in-out 0s;
   transition: all 250ms ease-in-out 0s;
   text-decoration: none;
@@ -309,7 +310,7 @@ header .modal .login-block {
 
 .product-description {
   position: relative;
-  height: 550px;
+  height: 662px;
 }
 .product-description h1 {
   font-size: 2em;
@@ -411,6 +412,108 @@ header .modal .login-block {
   margin-right: 4px;
 }
 
+.product-more-details {
+  margin-top: 50px;
+}
+.product-more-details .tab-content > .active {
+  margin: 70px auto;
+  float: none;
+}
+.product-more-details .tab-content p {
+  line-height: 1.6;
+  color: #666;
+  margin: 0 0 20px 0;
+}
+.product-more-details ul {
+  text-align: center;
+}
+.product-more-details ul li {
+  display: inline-block;
+  float: none;
+}
+
+.nav-tabs > li > a {
+  border: none;
+  font-weight: 900;
+  color: #666;
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  border: none;
+  color: #3551ad;
+  border-bottom: 3px solid #3551ad;
+}
+
+.related-products {
+  display: inline-block;
+  margin: 0 0 80px 0;
+  width: 100%;
+}
+.related-products img {
+  width: 100%;
+  display: block;
+}
+.related-products .col-md-8 {
+  margin: 0 auto;
+  float: none;
+  padding: 0;
+}
+
+.related-inner {
+  border: 1px solid rgba(102, 102, 102, 0.4);
+}
+.related-inner:hover {
+  border: 1px solid #ff4081;
+}
+
+.related-block {
+  padding: 15px 15px;
+  display: inline-block;
+  width: 100%;
+}
+.related-block h5 {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.related-block p {
+  color: #666;
+  line-height: 1.4;
+  font-size: 0.9em;
+  margin: 0 0 20px 0;
+}
+.related-block p.product-price {
+  font-weight: 600;
+  color: #ff4081;
+  margin: 4px 0 10px 0;
+}
+.related-block button {
+  color: #ff4081;
+  font-size: 0.9em;
+  padding: 10px 35px;
+  border: 2px solid #ff4081;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  border-radius: 24px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.related-block button:hover {
+  background-color: #ff4081;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1100px) {
+  .product-more-details .tab-content > .active,
+  .related-products .col-md-8 {
+    width: 80%;
+  }
+}
 @media only screen and (max-width: 990px) {
   .col-md-1.product-thumbs {
     width: 10%;
@@ -429,6 +532,16 @@ header .modal .login-block {
 
   .product-description {
     height: auto;
+  }
+
+  .related-products .col-md-4 {
+    width: 33.33%;
+    float: left;
+  }
+
+  .product-more-details .tab-content > .active,
+  .related-products .col-md-8 {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -463,6 +576,22 @@ header .modal .login-block {
 
   .product-include button {
     padding: 18px 20px;
+  }
+
+  .related-products .col-md-4 {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 486px) {
+  .related-products .col-md-4 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .product-more-details .tab-content > .active {
+    margin: 30px auto 50px;
+    float: none;
   }
 }
 @media only screen and (max-width: 400px) {

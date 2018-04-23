@@ -47,6 +47,14 @@
 	background-color: $secondary-color
 	+border-radius($size-border)		
 
+=primary-button-outline($size-border,$font,$padding)
+	color: $secondary-color
+	font-size: $font+em
+	padding: $padding
+	border: 2px solid $secondary-color
+	+border-radius($size-border)		
+
+
 =slide-menu
 	width: 240px
 	background: $primary-color
@@ -68,7 +76,8 @@ body
 
 a,
 a:hover,
-a:focus
+a:focus,
+button
 	-webkit-transition: all 250ms ease-in-out 0s
 	transition: all 250ms ease-in-out 0s
 	text-decoration: none
