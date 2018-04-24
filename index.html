@@ -12,9 +12,192 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/main.css?id=0.1">
 
+	<script type="text/javascript">
+/*		// Create a request variable and assign a new XMLHttpRequest object to it.
+		var request = new XMLHttpRequest();
+
+		// Open a new connection, using the GET request on the URL endpoint
+		request.open('GET', 'https://private-70cb45-aobara.apiary-mock.com/product/list',true);
+
+request.onreadystatechange = function() {
+  if (request.readyState === 4)  { 
+    var serverResponse = request.responseText;
+    alert(serverResponse)
+  }
+};*/
+
+function myOnLoad(){
+
+	// Cargar Producto
+	var request = new XMLHttpRequest();
+	request.open("GET","https://private-70cb45-aobara.apiary-mock.com/product/list",true);
+	request.send();
+
+	request.onload = function () {
+			var data = JSON.parse(this.response);
+
+		data.forEach((list,index) => {
+			
+			if(index==0){ 
+				var selected = "selected"; 
+
+				var price = "$"+convertPrice(list.unitPriceInCents);
+				showPrice(price);
+				var productId = list.id;
+			}
+				else { 
+					selected = "";
+				}
+
+			document.getElementById("product-detail").innerHTML += "<option value='"+list.id+","+list.minQuantity+","+convertPrice(list.unitPriceInCents)+"'"+selected+">"+list.description+"</option>";
+		});
+
+	}
+	setTimeout(function(){
+		productImage();
+	}, 1000); 
+	
+
+	// Cargar Listado
+	var request = new XMLHttpRequest();
+	request.open("GET","https://private-70cb45-aobara.apiary-mock.com/product/list",true);
+	request.send();
+
+	request.onload = function () {
+			var data = JSON.parse(this.response);
+
+		data.forEach(list => {
+			document.getElementById("product-detail").innerHTML += "<option value='"+list.id+"'>"+list.description+"</option>";
+		});
+
+	}
+
+
+	// Productos Relacionados
+	request.open("GET","https://private-70cb45-aobara.apiary-mock.com/related-product/list",true);
+	request.send();
+
+	request.onload = function () {
+			var data = JSON.parse(this.response);
+
+		data.forEach((list,index) => {
+			document.getElementById("related-products").innerHTML += "<div class='col-md-4'><div class='related-inner'><a href='#''><img src='"+list.pictureUrl+"'></a><div class='related-block'><h5>"+list.title+"</h5><p class='product-price'>desde $"+convertPrice(list.fromPrice)+"</p><p class='description'>"+list.description+"</p><button>Contratar</button></div></div></div>";
+
+		});
+
+	}
+
+}
+
+
+function productImage() {
+
+	// Imágenes de productos
+	var request = new XMLHttpRequest();
+	var url = "https://private-70cb45-aobara.apiary-mock.com/product/"+obtainData(3)+"/photos";
+	request.open("GET",url,true);
+	request.send();
+
+	request.onload = function () {
+		var data = JSON.parse(this.response);
+	
+		data.forEach((list,index) => {
+			if(index==0){ 
+				document.getElementById("product-image").innerHTML = "<img src='"+list.url+"'>";				
+			}
+			document.getElementById("product-thumbs").innerHTML += "<a onclick='changeImage(\""+list.url+"\")'><img src='"+list.url+"'></a>";
+		});
+
+	}
+}
+
+function changeImage(url) {
+	document.getElementById("product-image").innerHTML = "<img src='"+url+"'>";
+}
+
+function setSelectValue (id, val) {
+    document.getElementById(id).value = val;
+}
+
+function convertPrice(price) {
+	var new_price = price / 100; 
+	return new_price;
+}
+
+function showPrice(price) {
+	document.getElementById('product-price').innerHTML = "";
+
+	var theDiv = document.getElementById("product-price");
+	var content = document.createTextNode(price);
+	theDiv.appendChild(content);
+}
+
+function reloadPrice(selectObject) {
+
+	document.getElementById("product-thumbs").innerHTML = "";
+	productImage(3);
+
+	var quantity = document.getElementById('product-quantity').value;
+	if(quantity <= 0 || quantity < obtainData(2)){
+		quantity = obtainData(2);
+	}
+
+	showPrice("$"+calcPrice(obtainData(1),quantity));
+	document.getElementById('product-quantity').value = quantity;
+}
+
+function reloadQuantityPrice(selectObject) {
+	showPrice("$"+calcPrice(obtainData(1),selectObject.value));
+	document.getElementById('product-quantity').value = selectObject.value;
+}
+
+function amount(operator) {
+	var quantity = document.getElementById('product-quantity').value;
+
+	if(operator == 1){
+		quantity--;
+		if(quantity <= 0 || quantity < obtainData(2)){
+			quantity = obtainData(2);
+		}
+	}
+	else {
+		quantity++;
+	}
+	
+	showPrice("$"+calcPrice(obtainData(1),quantity));
+	document.getElementById('product-quantity').value = quantity;
+}
+
+function obtainData(selection) {
+	var e = document.getElementById("product-detail");
+	var info = e.options[e.selectedIndex].value;
+	var array = info.split(",");
+
+	if(selection == 1){
+		// Quantity
+		return array[2];
+	}
+	if(selection == 2){
+		// Price
+		return array[1];
+	}
+	if(selection == 3){
+		// Product id
+		return array[0];
+	}
+}
+
+function calcPrice(price,quantity) {
+	return price * quantity;
+}
+
+
+
+	</script>
+
 </head>
 
-<body>
+<body onLoad="myOnLoad()">
 
 	<header>
 		<a href="index.html" class="logo-block">IguanaFix</a>
@@ -34,12 +217,14 @@
 
 		<div id="login-Modal" role="dialog">
 			<div class="login-block">
+				<form>
 				<label for="email">E-mail</label>
-				<input type="email" name="email">
+				<input type="email" name="email" autofocus="autofocus" autocomplete="current-email">
 				<label for="pass">Contraseña</label>
-				<input type="password" name="pass">
+				<input type="password" name="pass" autofocus="autofocus" autocomplete="current-password">
 
 				<input type="submit" name="enviar">
+				</form>
 			</div>
 		</div>
 	</header>
@@ -53,32 +238,24 @@
 			</div>
 			<div class="row">
 				<div class="block-images">
-					<div class="col-md-1 product-thumbs">
-						<a href="#"><img src="image/thumb.jpg"></a>
-						<a href="#"><img src="image/thumb.jpg"></a>
-						<a href="#"><img src="image/thumb.jpg"></a>
+					<div class="col-md-1 product-thumbs" id="product-thumbs">
 					</div>
-					<div class="col-md-6 product-image">
-						<img src="image/product-image.jpg">
+					<div class="col-md-6 product-image" id="product-image">
 					</div>
 				</div>
 				<div class="col-md-5 product-description">
 					<h1>Instalación de aire acondicionado split</h1>
-					<p class="product-price">
-						$3.199
+					<p class="product-price" id="product-price">						
 					</p>
 
 					<h3>Frigorías</h3>
 					<form>
-						<select name="product-detail">
-							<option value="1">Hasta 3.000 frigorías</option>
-							<option value="2">Hasta 4.000 frigorías</option>
-							<option value="3">Hasta 5.000 frigorías</option>
+						<select name="product-detail" id="product-detail" onchange="reloadPrice(this)">
 						</select>
 						<div class="quantity-module">
-							<button class="substract">-</button>
-							<input type="number" name="product-quantity">
-							<button class="add">+</button>
+							<button type="button" class="substract" onclick="amount(1)">-</button>
+							<input type="number" name="product-quantity" min="1" value="1" id="product-quantity" onchange="reloadQuantityPrice(this)" onkeypress="reloadQuantityPrice(this); return event.keyCode != 13;">
+							<button type="button" class="add" onclick="amount(2)">+</button>
 							<label>unidades</label>	
 						</div>
 											
@@ -123,43 +300,7 @@
 				</div>
 
 				<div class="related-products row">
-					<div class="col-md-8">
-					<div class="col-md-4">
-						<div class="related-inner">
-							<a href="#"><img src="image/product-image_x3.jpg"></a>						
-							<div class="related-block">
-								<h5>Instalación de AA asdd asddddasddd</h5>
-								<p class="product-price">desde $999</p>
-								<p class="description">Incluye: Desinstalación del aire acondicionado split anterior en caso de que lo hubiera.</p>
-								<button>Contratar</button>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-4">
-						<div class="related-inner">
-							<a href="#"><img src="image/product-image_x3.jpg"></a>						
-							<div class="related-block">
-								<h5>Instalación de AA asdd asddddasddd</h5>
-								<p class="product-price">desde $999</p>
-								<p class="description">Incluye: Desinstalación del aire acondicionado split anterior en caso de que lo hubiera.</p>
-								<button>Contratar</button>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-4">
-						<div class="related-inner">
-							<a href="#"><img src="image/product-image_x3.jpg"></a>						
-							<div class="related-block">
-								<h5>Instalación de AA asdd asddddasddd</h5>
-								<p class="product-price">desde $999</p>
-								<p class="description">Incluye: Desinstalación del aire acondicionado split anterior en caso de que lo hubiera.</p>
-								<button>Contratar</button>
-							</div>
-						</div>
-					</div>
-					</div>
+					<div class="col-md-8" id="related-products"></div>
 				</div>
 
 			</div>
