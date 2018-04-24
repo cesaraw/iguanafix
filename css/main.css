@@ -180,17 +180,6 @@ header .modal .login-block {
   right: auto;
   margin: 0 auto 0;
 }
-header .modal .login-block a.lost-pass {
-  display: block;
-  margin-top: 20px;
-  text-align: center;
-  color: #fff;
-  font-size: 0.9em;
-  padding: 10px 0;
-}
-header .modal .login-block a.lost-pass:hover {
-  color: #ff4081;
-}
 @media only screen and (max-width: 1200px) {
   header {
     padding: 20px 25px;
@@ -314,6 +303,17 @@ header .modal .login-block a.lost-pass:hover {
 .login-block label {
   font-size: 0.9em;
   color: #fff;
+}
+.login-block a.lost-pass {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9em;
+  padding: 10px 0;
+}
+.login-block a.lost-pass:hover {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .product-tree {
