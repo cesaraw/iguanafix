@@ -1,5 +1,6 @@
 // Api connection and interaction
 
+
 function myOnLoad(){
 
 	// Cargar Producto
@@ -10,14 +11,18 @@ function myOnLoad(){
 	request.onload = function () {
 			var data = JSON.parse(this.response);
 
-		data.forEach((list,index) => {
-			
+		data.forEach(function(list,index) {
 			if(index==0){ 
 				var selected = "selected"; 
 
 				var price = "$"+convertPrice(list.unitPriceInCents);
 				showPrice(price);
 				var productId = list.id;
+
+				sessionStorage.setItem("productId", productId);		
+				document.getElementById('product-quantity').value = list.minQuantity;
+
+				unitMeasure(list.minQuantity);
 			}
 				else { 
 					selected = "";
@@ -26,10 +31,16 @@ function myOnLoad(){
 			document.getElementById("product-detail").innerHTML += "<option value='"+list.id+","+list.minQuantity+","+convertPrice(list.unitPriceInCents)+"'"+selected+">"+list.description+"</option>";
 		});
 
+
 	}
-	setTimeout(function(){
-		productImage();
-	}, 1000); 
+	if(sessionStorage.getItem("productId") != ''){
+		productImage(sessionStorage.getItem("productId"));
+	}
+	else {
+		setTimeout(function(){
+			productImage();
+		}, 1500); 
+	}
 	
 
 	// Cargar Listado
@@ -40,7 +51,7 @@ function myOnLoad(){
 	request.onload = function () {
 			var data = JSON.parse(this.response);
 
-		data.forEach(list => {
+		data.forEach(function(list,index) {
 			document.getElementById("product-detail").innerHTML += "<option value='"+list.id+"'>"+list.description+"</option>";
 		});
 
@@ -54,7 +65,7 @@ function myOnLoad(){
 	request.onload = function () {
 			var data = JSON.parse(this.response);
 
-		data.forEach((list,index) => {
+		data.forEach(function(list,index) {
 			document.getElementById("related-products").innerHTML += "<div class='col-md-4'><div class='related-inner'><a href='#''><img src='"+list.pictureUrl+"'></a><div class='related-block'><h5>"+list.title+"</h5><p class='product-price'>desde $"+convertPrice(list.fromPrice)+"</p><p class='description'>"+list.description+"</p><button>Contratar</button></div></div></div>";
 
 		});
@@ -64,18 +75,22 @@ function myOnLoad(){
 }
 
 
-function productImage() {
+function productImage(productId) {
+
+	if(productId === null){
+		productId = obtainData(3);
+	}
 
 	// Imágenes de productos
 	var request = new XMLHttpRequest();
-	var url = "https://private-70cb45-aobara.apiary-mock.com/product/"+obtainData(3)+"/photos";
+	var url = "https://private-70cb45-aobara.apiary-mock.com/product/"+productId+"/photos";
 	request.open("GET",url,true);
 	request.send();
 
 	request.onload = function () {
 		var data = JSON.parse(this.response);
 	
-		data.forEach((list,index) => {
+		data.forEach(function(list,index) {
 			if(index==0){ 
 				document.getElementById("product-image").innerHTML = "<img src='"+list.url+"'>";				
 			}
@@ -98,8 +113,10 @@ function convertPrice(price) {
 	return new_price;
 }
 
-function showPrice(price) {
+function showPrice(price,quantity) {
 	document.getElementById('product-price').innerHTML = "";
+
+	unitMeasure(quantity);
 
 	var theDiv = document.getElementById("product-price");
 	var content = document.createTextNode(price);
@@ -109,7 +126,7 @@ function showPrice(price) {
 function reloadPrice(selectObject) {
 
 	document.getElementById("product-thumbs").innerHTML = "";
-	productImage(3);
+	productImage(obtainData(3));
 
 	var quantity = document.getElementById('product-quantity').value;
 	if(quantity <= 0 || quantity < obtainData(2)){
@@ -121,7 +138,7 @@ function reloadPrice(selectObject) {
 }
 
 function reloadQuantityPrice(selectObject) {
-	showPrice("$"+calcPrice(obtainData(1),selectObject.value));
+	showPrice("$"+calcPrice(obtainData(1),selectObject.value),selectObject.value);
 	document.getElementById('product-quantity').value = selectObject.value;
 }
 
@@ -137,8 +154,8 @@ function amount(operator) {
 	else {
 		quantity++;
 	}
-	
-	showPrice("$"+calcPrice(obtainData(1),quantity));
+
+	showPrice("$"+calcPrice(obtainData(1),quantity),quantity);
 	document.getElementById('product-quantity').value = quantity;
 }
 
@@ -148,11 +165,11 @@ function obtainData(selection) {
 	var array = info.split(",");
 
 	if(selection == 1){
-		// Quantity
+		// Price
 		return array[2];
 	}
 	if(selection == 2){
-		// Price
+		// Quantity
 		return array[1];
 	}
 	if(selection == 3){
@@ -163,4 +180,13 @@ function obtainData(selection) {
 
 function calcPrice(price,quantity) {
 	return price * quantity;
+}
+
+function unitMeasure(quantity) {
+	if(quantity == 1){
+		document.getElementById("product-unit").innerHTML = "unidad";
+	}
+	else {
+		document.getElementById("product-unit").innerHTML = "unidades";
+	}
 }

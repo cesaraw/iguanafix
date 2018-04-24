@@ -180,6 +180,17 @@ header .modal .login-block {
   right: auto;
   margin: 0 auto 0;
 }
+header .modal .login-block a.lost-pass {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9em;
+  padding: 10px 0;
+}
+header .modal .login-block a.lost-pass:hover {
+  color: #ff4081;
+}
 @media only screen and (max-width: 1200px) {
   header {
     padding: 20px 25px;
@@ -250,7 +261,23 @@ header .modal .login-block {
     padding: 20px 25px;
   }
 }
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 768px) {
+  header .modal .login-block {
+    width: 60%;
+  }
+  header .modal .login-block input {
+    padding: 10px;
+  }
+  header .modal .login-block input[type="submit"] {
+    padding: 15px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  header .modal .login-block {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 400px) {
   header .header-data {
     width: 100%;
   }
@@ -274,11 +301,11 @@ header .modal .login-block {
 .login-block input[type="submit"] {
   color: #fff;
   font-size: 0.9em;
-  padding: 11;
+  padding: 11px;
   background-color: #ff4081;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  border-radius: 24px;
   margin: 8px 0 0 0;
 }
 .login-block input[type="submit"]:hover {
@@ -375,6 +402,10 @@ header .modal .login-block {
   background-color: rgba(153, 153, 153, 0.2);
   color: #999;
 }
+.quantity-module button:hover {
+  color: #ff4081;
+  background-color: rgba(153, 153, 153, 0.1);
+}
 .quantity-module button.substract {
   border-right: none;
   -webkit-border-radius: 5px 0 0 5px;
@@ -455,6 +486,11 @@ header .modal .login-block {
   color: #666;
   letter-spacing: 0.05em;
   border-bottom: 3px solid transparent;
+}
+.nav-tabs > li > a:hover {
+  border-bottom: 3px solid #ff4081;
+  background: none;
+  color: #ff4081;
 }
 
 .nav-tabs > li.active > a,
@@ -579,7 +615,7 @@ header .modal .login-block {
   .col-md-1.product-thumbs {
     width: auto;
     position: absolute;
-    bottom: -86px;
+    bottom: -65px;
     z-index: 1;
   }
 
@@ -600,6 +636,27 @@ header .modal .login-block {
     width: 50%;
     margin-bottom: 30px;
   }
+
+  .product-description select {
+    padding: 15px 10px;
+  }
+
+  .quantity-module input,
+  .quantity-module button {
+    height: 45px;
+  }
+
+  .quantity-module button {
+    width: 45px;
+  }
+
+  .quantity-module input {
+    width: 60px;
+  }
+
+  .quantity-module label {
+    margin: 15px 0 0 12px;
+  }
 }
 @media only screen and (max-width: 486px) {
   .related-products .col-md-4 {
@@ -611,6 +668,10 @@ header .modal .login-block {
     margin: 30px auto 50px;
     float: none;
   }
+
+  .product-more-details ul li {
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 400px) {
   .product-description select {
@@ -621,14 +682,6 @@ header .modal .login-block {
   }
   .product-description .product-include button {
     width: 100%;
-  }
-
-  .product-thumbs img {
-    width: 62px;
-  }
-
-  .col-md-1.product-thumbs {
-    bottom: -76px;
   }
 
   .block-images {

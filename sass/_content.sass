@@ -78,6 +78,10 @@
 		background-color: rgba($category-links-color,.2)
 		color: $category-links-color
 
+		&:hover
+			color: $secondary-color
+			background-color: rgba($category-links-color,.1)
+
 		&.substract
 			border-right: none
 			+border-radius(5px 0 0 5)
@@ -150,6 +154,11 @@
 	color: $text-color
 	letter-spacing: 0.05em
 	border-bottom: 3px solid transparent
+
+	&:hover
+		border-bottom: 3px solid $secondary-color
+		background: none
+		color: $secondary-color
 
 .nav-tabs>li.active>a, 
 .nav-tabs>li.active>a:focus, 
@@ -260,7 +269,7 @@
 	.col-md-1.product-thumbs
 		width: auto
 		position: absolute
-		bottom: -86px
+		bottom: -65px
 		z-index: 1
 
 	.col-md-6.product-image
@@ -279,6 +288,23 @@
 			width: 50%
 			margin-bottom: 30px
 
+	.product-description 
+		select
+			padding: 15px 10px
+
+	.quantity-module input, 
+	.quantity-module button
+		height: 45px
+
+	.quantity-module button
+		width: 45px
+
+	.quantity-module input
+		width: 60px
+
+	.quantity-module label
+		margin: 15px 0 0 12px
+
 
 +breakpoint-max(486)
 
@@ -291,6 +317,8 @@
 		margin: 30px auto 50px
 		float: none
 
+	.product-more-details ul li
+		width: 100%
 
 
 
@@ -306,13 +334,6 @@
 
 		.product-include button
 			width: 100%
-
-	.product-thumbs 
-		img
-			width: 62px
-
-	.col-md-1.product-thumbs
-		bottom: -76px
 
 	.block-images
 		margin: 0 0 102px 0
